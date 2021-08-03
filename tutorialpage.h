@@ -1,6 +1,10 @@
 #ifndef TUTORIALPAGE_H
 #define TUTORIALPAGE_H
 #include <QDialog>
+#include <QGridLayout>
+#include <QLabel>
+#include <QDesktopServices>
+#include <QUrl>
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -12,6 +16,12 @@ class TutorialPage : public QDialog{
 
 public:
     TutorialPage();
+
+public slots:
+    void openUrl(QString);
+
+private:
+    QGridLayout *layout;
 };
 
 #endif // TUTORIALPAGE_H
