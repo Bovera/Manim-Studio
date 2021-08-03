@@ -8,6 +8,7 @@
 #include <QJsonValue>
 #include <cstdlib>
 #include <QFileDialog>
+#include <QMessageBox>
 
 namespace Ui {
 class SettingPage;
@@ -21,16 +22,15 @@ public:
     explicit SettingPage(QWidget *parent = nullptr);
     ~SettingPage();
 
-public slots:
+private slots:
     void checkEnv();
     void saveSetting();
-    void pathChose();
 
 private:
-    void readSetting();
     Ui::SettingPage *ui;
     QJsonObject configOb;
     QFile configFile;
+    QFile manimConfig;
 };
 
 #endif // SETTINGPAGE_H

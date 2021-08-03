@@ -1,12 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QMainWindow>
+#include <cstdlib>
+
 #include "highlighter.h"
 #include "settingpage.h"
 #include "texedit.h"
 #include "tutorialpage.h"
-
-#include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
 class QAction;
@@ -22,13 +23,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
 
     void loadFile(const QString &fileName);
+    QJsonObject* configOb;
 
 protected:
     void closeEvent(QCloseEvent *event) override;
 
 private slots:
-    void newFile();
-    void open();
     bool saveAs();
     void documentWasModified();
 #ifndef QT_NO_SESSIONMANAGER
@@ -36,8 +36,6 @@ private slots:
 #endif
     // for manim
     void make();
-    void debug();
-    void initialize();
     void texedit();
 
 private:
@@ -48,13 +46,7 @@ private:
     QString strippedName(const QString &fullFileName);
     QString lang;
     QString curFile;
-
-    // assembly of mainwindow
     QPlainTextEdit *textEdit;
-    TexEdit *texEdit;
-    TutorialPage *tutorialpage;
-    Highlighter *highmy;
-    SettingPage *page;
 };
 
 #endif // MAINWINDOW_H

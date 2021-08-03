@@ -34,6 +34,7 @@ int main(int argc, char *argv[]){
         QCoreApplication::installTranslator(&trans);
 
     MainWindow mainWin;
+    mainWin.configOb = &configOb;
     if (!parser.positionalArguments().isEmpty())
         mainWin.loadFile(parser.positionalArguments().first());
     mainWin.show();

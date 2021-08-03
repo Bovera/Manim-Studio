@@ -8,6 +8,6 @@
     <file>images/save.png</file>
     <file>images/make.png</file>
     <file>images/debug.png</file>
-    <file>images/restart.png</file>
+    <file>images/init.png</file>
 </qresource>
 </RCC>

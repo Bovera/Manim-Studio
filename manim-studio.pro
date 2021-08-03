@@ -15,14 +15,11 @@ SOURCES       = main.cpp \
                 tutorialpage.cpp
 
 RESOURCES     = image.qrc \
-                config.json \
                 checkenv.sh \
                 checkenv.bat \
                 README.md
 
 TRANSLATIONS  = lang_zhcn.ts
-
-INSTALLS     += target
 
 FORMS += \
     settingpage.ui
