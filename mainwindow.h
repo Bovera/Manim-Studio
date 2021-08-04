@@ -2,12 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <cstdlib>
+#include <QDesktopServices>
+#include <QUrl>
 
 #include "highlighter.h"
 #include "settingpage.h"
 #include "texedit.h"
-#include "tutorialpage.h"
+#include "makepage.h"
 
 QT_BEGIN_NAMESPACE
 class QAction;
@@ -35,7 +36,6 @@ private slots:
     void commitData(QSessionManager &);
 #endif
     // for manim
-    void make();
     void texedit();
 
 private:

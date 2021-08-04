@@ -31,10 +31,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
     new Highlighter(textEdit->document());
 }
 
-void MainWindow::make(){
-    // haven't done
-}
-
 void MainWindow::texedit(){
     TexEdit *texEdit = new TexEdit;
     texEdit->contentIn("Haven't connect it to target content!");
@@ -103,6 +99,7 @@ void MainWindow::createActions(){
 
     QToolBar *manimToolBar = new QToolBar(tr("Manim"));
     addToolBar(Qt::LeftToolBarArea,manimToolBar);
+    manimToolBar->setToolButtonStyle(Qt::ToolButtonTextOnly);
 
 // init
     const QIcon initIcon = QIcon(":/images/init.png");
@@ -156,7 +153,11 @@ void MainWindow::createActions(){
     const QIcon makeIcon = QIcon(":/images/make.png");
     QAction *makeAct = new QAction(makeIcon, tr("&Animate"), this);
     makeAct->setStatusTip(tr("Create the animation as final edition"));
-    connect(makeAct, &QAction::triggered, this, &MainWindow::make);
+    connect(makeAct, &QAction::triggered, this, [&]{
+        MakePage *makepage = new MakePage;
+        makepage->curFile = curFile;
+        makepage->show();
+    });
     editMenu->addAction(makeAct);
     manToolBar->addAction(makeAct);
 
@@ -190,8 +191,8 @@ void MainWindow::createActions(){
 
 // tutorial
     QAction *tutorialAct = helpMenu->addAction(tr("&Tutorial"), this, [&]{
-        TutorialPage *tutorialpage = new TutorialPage;
-        tutorialpage->show();
+        QString url = QCoreApplication::applicationDirPath().left(QCoreApplication::applicationDirPath().lastIndexOf("/"));
+        QDesktopServices::openUrl(QUrl(url+QString("/doc/index.html")));
     });
     tutorialAct->setStatusTip(tr("Show Manim tutorial from internet"));
 
